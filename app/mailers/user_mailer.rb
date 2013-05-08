@@ -2,6 +2,7 @@ class UserMailer < ActionMailer::Base
   default from: "testapp454@gmail.com"
   def welcome(user)
     @user = user
-    mail(:to => user.email, :subject => "Registered successfully!!")
+    attachments["rails.png"] = File.read("#{Rails.root}/app/assets/images/rails.png")
+    mail(:to => "#{user.name} <#{user.email}>", :subject => "Registered successfully!!")
   end
 end
